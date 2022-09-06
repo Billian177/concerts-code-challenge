@@ -14,19 +14,21 @@ class Venue
     end
 
     def concerts
-        Concert.all.filter{|concert| concert.venue==self}
+        Concert.all.filter do |concert| 
+            concert.venue==self
+        end
     end
     
-    def all_bands
-        self.concerts.map{|concert| concert.band}
-    end
-
     def bands
-        self.all_bands.uniq
+        self.concerts.map do |band|
+            band.band
+        end
     end
 
     def concert_on(date)
-        self.concerts.find{|concert| concert.date==date}
+        self.concerts.find do |concert|
+         concert.date==date
+        end
     end
 
     def most_frequent_band

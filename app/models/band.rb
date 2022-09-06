@@ -13,11 +13,11 @@ class Band
         @@all
     end
 
-    def concerts
+    def 
         Concert.all.filter{|concert| concert.band==self}
     end
 
-    def venues
+    def bandHometown
         self.concerts.map{|concert| concert.venue}.uniq
     end
 
